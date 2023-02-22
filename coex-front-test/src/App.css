@@ -1,0 +1,15 @@
+.contentMain{
+  display: grid;
+  grid-template-columns: 300px auto;
+  padding: 20px;
+}
+
+.title{
+  width: 80%;
+  padding: 20px;
+  background-color: burlywood;
+  border-radius: 20px;
+  margin: auto;
+  text-align: center;
+
+}

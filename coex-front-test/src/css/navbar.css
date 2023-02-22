@@ -1,0 +1,45 @@
+.containerNavbar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+  width: 100%;
+}
+
+.navbarContentImage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navbarImg{
+  width: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid;
+}
+
+.navbarLinks{
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.iconLink{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: gray;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  font-size: 1.2rem;
+}
+
+.iconLink:hover{
+  color: black;
+}
