@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { BASE_URL } from '../logic/const'
 import ListPerson from './ListPerson'
 import Title from './Title'
@@ -8,8 +7,18 @@ import ButtonLink from './ButtonLink'
 import getPersons from '../logic/getPersons'
 import InputGroup from './InputGroup'
 import Loading from './Loading'
+import Swal from 'sweetalert2'
 
 export default function Clientes () {
+  const swal = (msg, error) => {
+    const icon = !error ? 'success' : 'error'
+    const title = !error ? 'Todo bien' : 'Algo ha salido mal'
+    Swal.fire({
+      icon,
+      text: msg,
+      title
+    })
+  }
   const [loading, setLoading] = useState(true)
   const [persons, setPersons] = useState(null)
   const [search, setSearch] = useState('')
@@ -21,6 +30,7 @@ export default function Clientes () {
     })
       .then(response => response.json())
       .then(data => {
+        swal(data.msg, data.error)
         if (!data.error) setAction(action + 1)
       })
   }

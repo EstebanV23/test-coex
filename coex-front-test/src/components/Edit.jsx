@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import editPerson from '../logic/editPerson'
-import getPersons from '../logic/getPersons'
 import onePerson from '../logic/onePerson'
 import ButtonLink from './ButtonLink'
 import Formulario from './Formulario'
-import InputGroup from './InputGroup'
 import Loading from './Loading'
 import Title from './Title'
 

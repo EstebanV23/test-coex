@@ -1,7 +1,7 @@
 import '../css/navbar.css'
 import LinkIcon from './LinkIcon'
 
-export default function NavBar ({ changeTitle }) {
+export default function NavBar () {
   return (
     <div className='containerNavbar'>
       <div className='navbarContentImage'>
