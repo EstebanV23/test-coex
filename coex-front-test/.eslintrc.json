@@ -6,7 +6,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "node_modules/standard/eslintrc.json"
+        "./node_modules/standard/eslintrc.json"
     ],
     "overrides": [
     ],
@@ -20,6 +20,7 @@
     "rules": {
         "no-console": "warn",
         "no-unused-vars": "warn",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     }
 }

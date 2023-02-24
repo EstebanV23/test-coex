@@ -1,5 +1,6 @@
-export default function LinkIcon ({ symbol, children, titleChange }) {
+import { Link } from 'react-router-dom'
+export default function LinkIcon ({ symbol, children, href }) {
   return (
-    <h3 onClick={() => titleChange(children)} className="iconLink"><span className="material-symbols-outlined">{symbol}</span>{children}</h3>
+    <Link to={href} className='iconLink'><span className='material-symbols-outlined'>{symbol}</span>{children}</Link>
   )
 }

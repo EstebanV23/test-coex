@@ -1,0 +1,65 @@
+table{
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.buttonCreate{
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 20px;
+}
+
+.theadClientes{
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.theadClientes tr{
+  background-color: blueviolet;
+  color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.theadClientes th{
+  padding: 10px;
+}
+
+.whiteBack{
+  background-color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.actions{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.listPerson td{
+  padding: 10px;
+}
+
+.listPerson{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.144);
+}
+
+.actions a, .actions span{
+  color: blueviolet;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.actions a:hover, .actions span:hover{
+  color: rgb(4, 7, 158);
+}

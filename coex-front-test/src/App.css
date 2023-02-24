@@ -2,14 +2,48 @@
   display: grid;
   grid-template-columns: 300px auto;
   padding: 20px;
+  min-height: 100vh;
 }
 
 .title{
-  width: 80%;
   padding: 20px;
-  background-color: burlywood;
+  width: 100%;
+  background-color: white;
   border-radius: 20px;
-  margin: auto;
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: bolder;
   text-align: center;
+}
 
+.loading {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blink infinite ease-in-out 1s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0.5;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  padding: 0rem 2rem;
 }

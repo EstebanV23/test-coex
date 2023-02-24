@@ -1,0 +1,35 @@
+.contentCrear{
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+  display: grid;
+  place-items: center;
+}
+
+.inputGroup{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.2rem;
+}
+
+.inputValues{
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.4rem;
+  border: none;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.363);
+  font-size: 1.2rem;
+}
+
+.containerFormulario{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.formCrear{
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: white;
+}

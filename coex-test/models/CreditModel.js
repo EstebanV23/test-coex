@@ -42,7 +42,7 @@ class Credit {
       const newPerson = creditModelSchema(dataPerson)
       return await newPerson.save()
     } catch (e) {
-      return this.buildErrorStucture(e, 'No se pudo crear la persona, por favor revise los campos')
+      return this.buildErrorStucture(e, 'No se pudo crear el credito, por favor revise los campos')
     }
   }
 
@@ -58,6 +58,16 @@ class Credit {
   static selectBy (property, value) {
     const options = {}
     options[property] = value
+  }
+
+  static async delete (personNit) {
+    try {
+      const options = { personNit }
+      const credit = await creditModelSchema.deleteMany(options)
+      return credit
+    } catch (e) {
+      return this.buildErrorStucture(e, 'Algo ha salido mal')
+    }
   }
 
   buildData () {

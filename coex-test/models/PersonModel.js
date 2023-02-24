@@ -62,6 +62,7 @@ class Person {
       const options = {}
       options[property] = value
       const persons = await personModelSchema.findOne(options)
+      if (persons === null) throw new Error('No se encontro la persona con el nit enviado')
       return persons
     } catch (e) {
       return this.buildErrorStucture(e, 'Algo ha salido mal')
@@ -73,6 +74,17 @@ class Person {
       const options = { nit }
       const persons = await personModelSchema.updateOne(options, { $set: data })
       if (!persons.matchedCount) throw new Error('No se encontró el usuario con el nit enviado')
+      return persons
+    } catch (e) {
+      return this.buildErrorStucture(e, 'Algo ha salido mal')
+    }
+  }
+
+  static async delete (nit) {
+    try {
+      const options = { nit }
+      const persons = await personModelSchema.deleteOne(options)
+      if (persons.deletedCount === 0) throw new Error('No se encontró el usuario con el nit enviado')
       return persons
     } catch (e) {
       return this.buildErrorStucture(e, 'Algo ha salido mal')

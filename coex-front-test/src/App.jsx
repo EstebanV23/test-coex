@@ -1,32 +1,25 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
+import { Route, Routes } from 'react-router-dom'
+import Inicio from './components/Inicio'
+import Clientes from './components/Clientes'
+import Creditos from './components/Creditos'
+import Edit from './components/Edit'
+import Crear from './components/Crear'
 
-function App() {
-  const [changeTitle, setChangeTitle] = useState('Inicio')
-  const [dataPersons, setDataPersons] = useState(null)
-  
-
-  useEffect(() => {
-    // if (changeTitle === 'Clientes') {
-    //   fetch('http://localhost:5000/api/persons')
-    //     .then(response => response.json())
-    //     .then(data => setDataPersons(data))
-    // }
-    return () => {
-      setDataPersons(null)
-    }
-  },[changeTitle])
-
+function App () {
   return (
     <main className='contentMain'>
       <aside className='aside'>
-        <NavBar changeTitle={setChangeTitle} />
+        <NavBar />
       </aside>
-      <section>
-        <h2 className='title'>{changeTitle}</h2>
-        {dataPersons && <DataPerson data={dataPersons} />}
-      </section>
+      <Routes>
+        <Route path='/' element={<Inicio />} />
+        <Route path='/clientes' element={<Clientes />} />
+        <Route path='/creditos' element={<Creditos />} />
+        <Route path='/crear' element={<Crear />} />
+        <Route path='/clientes/:nit' element={<Edit />} />
+      </Routes>
     </main>
   )
 }
