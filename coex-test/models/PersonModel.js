@@ -42,7 +42,8 @@ class Person {
     try {
       const dataPerson = this.buildData()
       const newPerson = personModelSchema(dataPerson)
-      return await newPerson.save()
+      const person = await newPerson.save()
+      return { ...person, msg: 'Se ha creado exitosamente' }
     } catch (e) {
       return this.buildErrorStucture(e, 'No se pudo crear la persona, por favor revise los campos')
     }
@@ -82,7 +83,7 @@ class Person {
       const options = { nit }
       const persons = await personModelSchema.updateOne(options, { $set: data })
       if (!persons.matchedCount) throw new Error('No se encontró el usuario con el nit enviado')
-      return persons
+      return { ...persons, msg: 'Editado correctamente' }
     } catch (e) {
       return this.buildErrorStucture(e, 'Algo ha salido mal')
     }
@@ -93,7 +94,7 @@ class Person {
       const options = { nit }
       const persons = await personModelSchema.deleteOne(options)
       if (persons.deletedCount === 0) throw new Error('No se encontró el usuario con el nit enviado')
-      return persons
+      return { ...persons, msg: 'Eliminado correctamente' }
     } catch (e) {
       return this.buildErrorStucture(e, 'Algo ha salido mal')
     }

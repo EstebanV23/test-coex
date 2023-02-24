@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import InputGroup from './InputGroup'
 import SelectGroup from './SelectGroup'
 import Loading from './Loading'
-import onePerson from '../logic/onePerson'
 import getPersons from '../logic/getPersons'
+import Swal from 'sweetalert2'
 
 export default function FormularioCredit ({
   onSubmit,
@@ -43,7 +43,9 @@ export default function FormularioCredit ({
   const functionSubmit = async (e) => {
     e.preventDefault()
     const dataCredit = builData()
-    await onSubmit(dataCredit)
+    const response = await onSubmit(dataCredit)
+    console.log(response)
+    Swal.fire(response.msg)
     setNavigation(true)
   }
 

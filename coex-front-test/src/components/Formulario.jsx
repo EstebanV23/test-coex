@@ -4,6 +4,7 @@ import { CIUDADES } from '../logic/ciudades'
 import { ESTADOS } from '../logic/ESTADOS'
 import InputGroup from './InputGroup'
 import SelectGroup from './SelectGroup'
+import Swal from 'sweetalert2'
 
 export default function Formulario ({
   initialNombres = '',
@@ -19,6 +20,15 @@ export default function Formulario ({
   textBottom = 'Enviar',
   onSubmit
 }) {
+  const swal = (msg, error) => {
+    const icon = !error ? 'success' : 'error'
+    const title = !error ? 'Todo bien' : 'Algo ha salido mal'
+    Swal.fire({
+      icon,
+      text: msg,
+      title
+    })
+  }
   const [nombres, setNombres] = useState(initialNombres)
   const [apellidos, setApellidos] = useState(initialApellidos)
   const [cupoTotal, setCupoTotal] = useState(initialCupoTotal)
@@ -50,7 +60,9 @@ export default function Formulario ({
   const functionSubmit = async (e) => {
     e.preventDefault()
     const dataPerson = builData()
-    await onSubmit(dataPerson, nit)
+    const response = await onSubmit(dataPerson, nit)
+    console.log(response)
+    swal(response.msg, response.error)
     setNavigation(true)
   }
 
