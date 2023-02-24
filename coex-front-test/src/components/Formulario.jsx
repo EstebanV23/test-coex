@@ -24,8 +24,6 @@ export default function Formulario ({
   const [diasGracias, setDiasGracias] = useState(initialDiasGracias)
   const [estado, setEstado] = useState(initialEstado)
 
-  console.log({ nombres })
-
   return (
     <form className='formCrear'>
       <InputGroup
