@@ -3,18 +3,25 @@ export default function InputGroup ({
   label,
   placeholder,
   onChange,
-  value
+  value,
+  type = 'text',
+  disabled = false,
+  required = true,
+  autoComplete = 'off'
 }) {
   return (
     <div className='inputGroup'>
       <label htmlFor={forInput}>{label}</label>
       <input
+        type={type}
         className='inputValues'
-        type='text'
         id={forInput}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         value={value}
+        disabled={disabled}
+        required={required}
+        autoComplete={autoComplete}
       />
     </div>
   )

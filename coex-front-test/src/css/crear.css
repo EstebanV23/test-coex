@@ -12,13 +12,20 @@
   font-size: 1.2rem;
 }
 
+.inputGroup label{
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
 .inputValues{
   padding: 0.3rem 0.5rem;
   border-radius: 0.4rem;
   border: none;
   outline: none;
-  border: 1px solid rgba(0, 0, 0, 0.363);
+  border: 1px solid rgba(0, 0, 0, 0.192);
   font-size: 1.2rem;
+  caret-color: blueviolet;
+  width: 100%;
 }
 
 .containerFormulario{
@@ -27,8 +34,34 @@
   gap: 4px;
 }
 
+.containerFormulario h3{
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
 .formCrear{
   padding: 1rem;
   border-radius: 10px;
   background-color: white;
+  display: flex;
+  gap: 20px;
+}
+
+.formAside {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 700px;
+}
+
+.rightGroup{
+  display: flex;
+  gap: 20px;
+}
+
+.buttonSubmit{
+  border: none;
+  font-size: 1.3rem;
+  font-weight: 20px;
+  cursor: pointer;
 }

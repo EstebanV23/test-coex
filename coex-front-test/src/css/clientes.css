@@ -1,7 +1,7 @@
 table{
   border-collapse: collapse;
   width: 100%;
-  border-radius: 1em;
+  border-radius: 1rem 1rem 0 0;
   overflow: hidden;
 }
 
@@ -15,14 +15,12 @@ table{
 
 .theadClientes{
   border-radius: 1rem;
-  overflow: hidden;
+  background-color: blueviolet;
 }
 
 .theadClientes tr{
-  background-color: blueviolet;
   color: white;
   border-radius: 1rem;
-  overflow: hidden;
 }
 
 .theadClientes th{
@@ -62,4 +60,11 @@ table{
 
 .actions a:hover, .actions span:hover{
   color: rgb(4, 7, 158);
+}
+
+.sectionButtons{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

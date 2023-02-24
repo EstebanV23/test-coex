@@ -12,7 +12,7 @@ export default function ListPerson ({ nombres, apellidos, nit, direccion, ciudad
       <td>{cupo}</td>
       <td>{estado ? 'Activo' : 'Inactivo'}</td>
       <td className='actions'>
-        <LinkIcon href={`/edit/${nit}`} symbol='edit' />
+        <LinkIcon href={`/clientes/${nit}`} symbol='edit' />
         <span className='material-symbols-outlined' onClick={() => remove(nit)}>delete</span>
       </td>
     </tr>

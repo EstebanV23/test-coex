@@ -2,6 +2,7 @@ import ButtonLink from './ButtonLink'
 import Title from './Title'
 import '../css/crear.css'
 import Formulario from './Formulario'
+import createPerson from '../logic/createPerson'
 
 export default function Crear () {
   return (
@@ -11,7 +12,10 @@ export default function Crear () {
       <div className='contentCrear'>
         <div className='containerFormulario'>
           <h3>Datos Personales</h3>
-          <Formulario />
+          <Formulario
+            textBottom='Crear Cliente'
+            onSubmit={createPerson}
+          />
         </div>
       </div>
     </section>

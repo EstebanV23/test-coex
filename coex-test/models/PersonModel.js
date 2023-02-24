@@ -57,11 +57,19 @@ class Person {
     }
   }
 
-  static async selectBy (property, value) {
+  static async selectBy (value) {
     try {
-      const options = {}
-      options[property] = value
-      const persons = await personModelSchema.findOne(options)
+      const persons = await personModelSchema.find({ $or: [{ nit: new RegExp(`${value}`) }, { nombres: new RegExp(`${value}`) }] })
+      if (persons === null) throw new Error('No se encontro la persona con el nit enviado')
+      return persons
+    } catch (e) {
+      return this.buildErrorStucture(e, 'Algo ha salido mal')
+    }
+  }
+
+  static async selectByOne (nit) {
+    try {
+      const persons = await personModelSchema.findOne({ nit })
       if (persons === null) throw new Error('No se encontro la persona con el nit enviado')
       return persons
     } catch (e) {

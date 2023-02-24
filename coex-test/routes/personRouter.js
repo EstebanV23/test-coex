@@ -5,6 +5,9 @@ const validationData = require('../middlewares/validateData')
 
 const personRouter = express.Router()
 
+const routesGetUnique = ['/unique/:nit']
+personRouter.get(routesGetUnique, personController.unique)
+
 const routesGet = ['/', '/get', '/all']
 personRouter.get(routesGet, personController.getAll)
 

@@ -31,7 +31,7 @@ const CreditSchema = mongoose.Schema({
   },
   tasaInteres: {
     type: Number,
-    required: false
+    required: true
   },
   fechaDesembolso: {
     type: Date,

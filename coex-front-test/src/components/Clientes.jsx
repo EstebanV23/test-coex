@@ -5,10 +5,14 @@ import ListPerson from './ListPerson'
 import Title from './Title'
 import '../css/clientes.css'
 import ButtonLink from './ButtonLink'
+import getPersons from '../logic/getPersons'
+import InputGroup from './InputGroup'
+import Loading from './Loading'
 
 export default function Clientes () {
   const [loading, setLoading] = useState(true)
   const [persons, setPersons] = useState(null)
+  const [search, setSearch] = useState('')
   const [action, setAction] = useState(0)
 
   const removePerson = (nit) => {
@@ -66,22 +70,28 @@ export default function Clientes () {
   }
 
   useEffect(() => {
-    fetch(`${BASE_URL.dev}/api/persons`)
-      .then(response => response.json())
+    getPersons(search)
       .then(data => {
-        renderData(data)
         setLoading(false)
+        renderData(data)
       })
-  }, [action])
+  }, [action, search])
 
   if (loading) {
-    return <h1 className='loading'>Cargando...</h1>
+    return <Loading />
   }
   return (
     <section className='section'>
       <Title> Clientes </Title>
       <div className='whiteBack'>
-        <ButtonLink to='/crear'>Crear nuevo cliente</ButtonLink>
+        <div className='sectionButtons'>
+          <InputGroup
+            placeholder='Nombres o Nit/CC'
+            value={search}
+            onChange={setSearch}
+          />
+          <ButtonLink to='/crear'>Crear nuevo cliente</ButtonLink>
+        </div>
         {persons.length ? <TableClientes /> : <h2>No hay clientes</h2>}
       </div>
     </section>

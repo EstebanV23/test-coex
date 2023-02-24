@@ -13,7 +13,7 @@ const personController = {
   },
   byNit: async (req, res) => {
     const { nit } = req.params
-    const persons = await Person.selectBy('nit', nit)
+    const persons = await Person.selectBy(nit)
     res.json(persons)
   },
   remove: async (req, res) => {
@@ -29,6 +29,11 @@ const personController = {
       const persons = await Person.update(nit, req.body)
       res.json(persons)
     }
+  },
+  unique: async (req, res) => {
+    const { nit } = req.params
+    const persons = await Person.selectByOne(nit)
+    res.json(persons)
   }
 }
 

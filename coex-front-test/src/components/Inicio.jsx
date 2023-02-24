@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { BASE_URL } from '../logic/const'
 import Title from './Title'
 import '../css/incio.css'
+import Loading from './Loading'
 
 export default function Inicio () {
   const [loading, setLoading] = useState(true)
@@ -39,7 +40,7 @@ export default function Inicio () {
   }, [])
 
   if (loading) {
-    return <h1 className='loading'>Cargando...</h1>
+    return <Loading />
   }
 
   return (
