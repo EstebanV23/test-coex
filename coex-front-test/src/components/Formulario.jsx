@@ -61,7 +61,6 @@ export default function Formulario ({
     e.preventDefault()
     const dataPerson = builData()
     const response = await onSubmit(dataPerson, nit)
-    console.log(response)
     swal(response.msg, response.error)
     setNavigation(true)
   }

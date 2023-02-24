@@ -10,6 +10,15 @@ export default function FormularioCredit ({
   onSubmit,
   textBottom = 'Crear'
 }) {
+  const swal = (msg, error) => {
+    const icon = !error ? 'success' : 'error'
+    const title = !error ? 'Todo bien' : 'Algo ha salido mal'
+    Swal.fire({
+      icon,
+      text: msg,
+      title
+    })
+  }
   const [pagare, setPagare] = useState('')
   const [monto, setMonto] = useState('')
   const [personNit, setPersonNit] = useState('')
@@ -44,8 +53,7 @@ export default function FormularioCredit ({
     e.preventDefault()
     const dataCredit = builData()
     const response = await onSubmit(dataCredit)
-    console.log(response)
-    Swal.fire(response.msg)
+    swal(response.msg, response.error)
     setNavigation(true)
   }
 
