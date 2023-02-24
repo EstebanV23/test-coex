@@ -13,7 +13,6 @@ export default function FormularioCredit ({
   const [pagare, setPagare] = useState('')
   const [monto, setMonto] = useState('')
   const [personNit, setPersonNit] = useState('')
-  const [personNombre, setPersonNombre] = useState('')
   const [fechaCredito, setFechaCredito] = useState('')
   const [cuotasMensuales, setCuotasMensuales] = useState('')
   const [cuotaInicial, setCuotaInicial] = useState('')
@@ -27,11 +26,12 @@ export default function FormularioCredit ({
   const navigate = useNavigate()
 
   const builData = () => {
+    const namePerson = persons.filter(item => item.nit === personNit).map(element => element.nombres).join()
     return {
       pagare,
       monto,
       personNit,
-      personNombre,
+      personNombre: namePerson,
       fechaCredito,
       cuotasMensuales,
       cuotaInicial,
@@ -47,53 +47,27 @@ export default function FormularioCredit ({
     setNavigation(true)
   }
 
-  const getPersonsSelect = async () => {
-    const personsSelected = await getPersons('')
+  const getPersonsSelect = async (nit) => {
+    const personsSelected = await getPersons(nit)
+    setPersons(personsSelected)
     const newPersons = personsSelected.map(item => {
       return {
         key: item._id,
-        val: item.nombres,
+        val: item.nit,
         nombre: item.nombres
       }
     })
     return newPersons
   }
 
-  const getPerson = async (nit) => {
-    const personSelected = await onePerson(nit)
-    return {
-      key: personSelected._id,
-      val: personSelected.nombres,
-      nombre: personSelected.nombres
-    }
-  }
-
-  const generateSelect = (data) => {
-    return (
-      <SelectGroup
-        forInput='personaNombre'
-        label='Nombre del Cliente'
-        value={personNombre}
-        onChange={setPersonNombre}
-        data={data}
-        defaultText='Seleccione el nombre del cliente'
-      />
-    )
-  }
-
   useEffect(() => {
-    if (!personNit) {
-      getPersonsSelect()
-        .then(data => {
-          setLoading(false)
-          setSelect(generateSelect(data))
-        })
-    } else {
-      getPerson(personNit)
-        .then(data => {
-          setLoading(false)
-          setSelect(generateSelect(data))
-        })
+    getPersonsSelect(personNit)
+      .then(data => {
+        setLoading(false)
+        setSelect(data)
+      })
+    return () => {
+      setLoading(true)
     }
   }, [personNit])
 
@@ -125,11 +99,16 @@ export default function FormularioCredit ({
           value={personNit}
           onChange={setPersonNit}
         />
-        {
-          loading
-            ? <Loading />
-            : select
-        }
+        {loading
+          ? <Loading />
+          : <SelectGroup
+              forInput='personaNombre'
+              label='Nombre del Cliente'
+              value={personNit}
+              onChange={setPersonNit}
+              data={select}
+              defaultText='Seleccione el nombre del cliente'
+            />}
         <InputGroup
           forInput='fechaCedito'
           label='Fecha del Credito'

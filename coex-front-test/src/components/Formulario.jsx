@@ -39,7 +39,7 @@ export default function Formulario ({
       cupoTotal,
       nit,
       direccion,
-      cupoDisponible: Number(cupoDisponible),
+      cupoDisponible: Number(cupoDisponible) || Number(cupoTotal),
       ciudad,
       telefono,
       diasGracia,
@@ -49,7 +49,6 @@ export default function Formulario ({
 
   const functionSubmit = async (e) => {
     e.preventDefault()
-    initialCupoDisponible || setCupoDisponible(cupoTotal)
     const dataPerson = builData()
     await onSubmit(dataPerson, nit)
     setNavigation(true)
