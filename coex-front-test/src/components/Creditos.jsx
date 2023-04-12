@@ -12,7 +12,7 @@ export default function Creditos () {
         <div className='containerFormulario'>
           <h3>Datos Del Credito</h3>
           <FormularioCredit
-            textBottom='Crear Cliente'
+            textBottom='Crear Credito'
             onSubmit={createCredit}
           />
         </div>
