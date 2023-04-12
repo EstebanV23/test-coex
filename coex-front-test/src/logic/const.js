@@ -1,3 +1,3 @@
 export const BASE_URL = {
-  dev: 'http://localhost:5000'
+  dev: 'https://backend-test-coex.up.railway.app/'
 }
